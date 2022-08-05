@@ -45,6 +45,8 @@ const App = () => {
     })();
   }, []);
 
+  
+
   // eslint-disable-next-line no-constant-condition
   return <>{loading ? <Loader /> : <Routing />}</>;
 };
