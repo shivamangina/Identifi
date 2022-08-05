@@ -8,7 +8,13 @@ import { ethers } from "ethers";
 import Config from "./Config";
 
 const App = () => {
-  const { loading, addWeb3ProviderToContext, addUserInfo, addCreatorData, setLoading } = useContext(GlobalContext);
+  const {
+    loading,
+    addWeb3ProviderToContext,
+    addUserInfo,
+    addCreatorData,
+    setLoading,
+  } = useContext(GlobalContext);
 
   useEffect(() => {
     (async () => {
@@ -17,23 +23,33 @@ const App = () => {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const accounts = await provider.listAccounts();
         const network = await provider.getNetwork();
-        if (network.name !== Config.CREATOR_FUND.network)
-          throw Error(`You are using ${network.name}, Please switch to ${Config.CREATOR_FUND.network} to use our App`);
+        if (network.name !== Config.DEPLOYED_CONTRACT.network)
+          throw Error(
+            `You are using ${network.name}, Please switch to ${Config.DEPLOYED_CONTRACT.network} to use our App`
+          );
         const signer = provider.getSigner();
-        const Contract = new ethers.Contract(Config.CREATOR_FUND.ROPSTEN.CONTRACT_ADDRESS, Config.CREATOR_FUND.ROPSTEN.ABI, signer);
+        const Contract = new ethers.Contract(
+          Config.DEPLOYED_CONTRACT.ROPSTEN.CONTRACT_ADDRESS,
+          Config.DEPLOYED_CONTRACT.ROPSTEN.ABI,
+          signer
+        );
         await addWeb3ProviderToContext({
           provider,
           signer,
           accounts,
-          Contract
+          Contract,
         });
         const creatorData = await getAllCreators(Contract);
         await addCreatorData({
-          creatorData
+          creatorData,
         });
-        const userInfo = await getLoggedInUser(creatorData, accounts[0], Contract);
+        const userInfo = await getLoggedInUser(
+          creatorData,
+          accounts[0],
+          Contract
+        );
         await addUserInfo({
-          userInfo
+          userInfo,
         });
         setTimeout(() => {
           setLoading(false);

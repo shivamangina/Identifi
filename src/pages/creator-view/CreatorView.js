@@ -8,7 +8,7 @@ const product = {
   image: {
     id: 1,
     name: "Angled view",
-    src: Elon,
+    src: "",
     alt: "Angled front view with bag zipped and handles upright.",
   },
 
