@@ -1,7 +1,7 @@
 const config = {
   DEPLOYED_CONTRACT: {
     ROPSTEN: {
-      CONTRACT_ADDRESS: "0xA731D8D40965090aD96179b21136A1BC9ED77E5F",
+      CONTRACT_ADDRESS: "0x02851a9523FCeB8A4f43bf990Ee41Af9BAEAA459",
       ABI: [
         {
           anonymous: false,
@@ -10,17 +10,17 @@ const config = {
               indexed: true,
               internalType: "address",
               name: "oldOwner",
-              type: "address",
+              type: "address"
             },
             {
               indexed: true,
               internalType: "address",
               name: "newOwner",
-              type: "address",
-            },
+              type: "address"
+            }
           ],
           name: "OwnerSet",
-          type: "event",
+          type: "event"
         },
         {
           anonymous: false,
@@ -29,23 +29,23 @@ const config = {
               indexed: false,
               internalType: "address",
               name: "userPublicKey",
-              type: "address",
+              type: "address"
             },
             {
               indexed: false,
               internalType: "address",
               name: "issuerPublicKey",
-              type: "address",
+              type: "address"
             },
             {
               indexed: false,
               internalType: "string",
               name: "id",
-              type: "string",
-            },
+              type: "string"
+            }
           ],
           name: "certificateIssued",
-          type: "event",
+          type: "event"
         },
         {
           anonymous: false,
@@ -54,11 +54,11 @@ const config = {
               indexed: false,
               internalType: "string",
               name: "certificateId",
-              type: "string",
-            },
+              type: "string"
+            }
           ],
           name: "certificateRevoked",
-          type: "event",
+          type: "event"
         },
         {
           anonymous: false,
@@ -67,11 +67,11 @@ const config = {
               indexed: false,
               internalType: "address",
               name: "issuerPublicKey",
-              type: "address",
-            },
+              type: "address"
+            }
           ],
           name: "issuerCreated",
-          type: "event",
+          type: "event"
         },
         {
           anonymous: false,
@@ -80,11 +80,11 @@ const config = {
               indexed: false,
               internalType: "address",
               name: "issuerId",
-              type: "address",
-            },
+              type: "address"
+            }
           ],
           name: "issuerDisabled",
-          type: "event",
+          type: "event"
         },
         {
           anonymous: false,
@@ -93,11 +93,11 @@ const config = {
               indexed: false,
               internalType: "address",
               name: "issuerId",
-              type: "address",
-            },
+              type: "address"
+            }
           ],
           name: "issuerEnabled",
-          type: "event",
+          type: "event"
         },
         {
           anonymous: false,
@@ -106,11 +106,11 @@ const config = {
               indexed: false,
               internalType: "address",
               name: "userPublicKey",
-              type: "address",
-            },
+              type: "address"
+            }
           ],
           name: "userCreated",
-          type: "event",
+          type: "event"
         },
         {
           anonymous: false,
@@ -119,11 +119,11 @@ const config = {
               indexed: false,
               internalType: "address",
               name: "userPublicKey",
-              type: "address",
-            },
+              type: "address"
+            }
           ],
           name: "userDisabled",
-          type: "event",
+          type: "event"
         },
         {
           anonymous: false,
@@ -132,266 +132,266 @@ const config = {
               indexed: false,
               internalType: "address",
               name: "userPublicKey",
-              type: "address",
-            },
+              type: "address"
+            }
           ],
           name: "userEnabled",
-          type: "event",
+          type: "event"
         },
         {
           inputs: [
             {
               internalType: "string",
               name: "",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "address",
               name: "",
-              type: "address",
-            },
+              type: "address"
+            }
           ],
           name: "accessList",
           outputs: [
             {
               internalType: "bool",
               name: "",
-              type: "bool",
-            },
+              type: "bool"
+            }
           ],
           stateMutability: "view",
-          type: "function",
+          type: "function"
         },
         {
           inputs: [
             {
               internalType: "uint256",
               name: "",
-              type: "uint256",
-            },
+              type: "uint256"
+            }
           ],
           name: "certificates",
           outputs: [
             {
               internalType: "string",
               name: "id",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "string",
               name: "name",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "string",
               name: "typeOfCertificate",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "string",
               name: "version",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "string",
               name: "issuedDate",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "string",
               name: "expiresAt",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "bool",
               name: "isPermanent",
-              type: "bool",
+              type: "bool"
             },
             {
               internalType: "bool",
               name: "isPublic",
-              type: "bool",
+              type: "bool"
             },
             {
               internalType: "bool",
               name: "isActive",
-              type: "bool",
+              type: "bool"
             },
             {
               internalType: "address",
               name: "issuerPublicKey",
-              type: "address",
+              type: "address"
             },
             {
               internalType: "address",
               name: "userPublicKey",
-              type: "address",
-            },
+              type: "address"
+            }
           ],
           stateMutability: "view",
-          type: "function",
+          type: "function"
         },
         {
           inputs: [
             {
               internalType: "address",
               name: "newOwner",
-              type: "address",
-            },
+              type: "address"
+            }
           ],
           name: "changeOwner",
           outputs: [],
           stateMutability: "nonpayable",
-          type: "function",
+          type: "function"
         },
         {
           inputs: [
             {
               internalType: "address",
               name: "_publicKey",
-              type: "address",
+              type: "address"
             },
             {
               internalType: "string",
               name: "_typeOfIssuer",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "string",
               name: "_org",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "string",
               name: "_name",
-              type: "string",
-            },
+              type: "string"
+            }
           ],
           name: "createIssuer",
           outputs: [
             {
               internalType: "bool",
               name: "",
-              type: "bool",
-            },
+              type: "bool"
+            }
           ],
           stateMutability: "nonpayable",
-          type: "function",
+          type: "function"
         },
         {
           inputs: [
             {
               internalType: "string",
               name: "_firstName",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "string",
               name: "_lastName",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "string",
               name: "_gender",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "string",
               name: "_typeOfUser",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "string",
               name: "_location",
-              type: "string",
-            },
+              type: "string"
+            }
           ],
           name: "createUser",
           outputs: [
             {
               internalType: "bool",
               name: "",
-              type: "bool",
-            },
+              type: "bool"
+            }
           ],
           stateMutability: "nonpayable",
-          type: "function",
+          type: "function"
         },
         {
           inputs: [
             {
               internalType: "address",
               name: "_issuerId",
-              type: "address",
-            },
+              type: "address"
+            }
           ],
           name: "disableIssuer",
           outputs: [
             {
               internalType: "bool",
               name: "",
-              type: "bool",
-            },
+              type: "bool"
+            }
           ],
           stateMutability: "nonpayable",
-          type: "function",
+          type: "function"
         },
         {
           inputs: [
             {
               internalType: "address",
               name: "_userPublicKey",
-              type: "address",
-            },
+              type: "address"
+            }
           ],
           name: "disableUser",
           outputs: [
             {
               internalType: "bool",
               name: "",
-              type: "bool",
-            },
+              type: "bool"
+            }
           ],
           stateMutability: "nonpayable",
-          type: "function",
+          type: "function"
         },
         {
           inputs: [
             {
               internalType: "address",
               name: "_issuerId",
-              type: "address",
-            },
+              type: "address"
+            }
           ],
           name: "enableIssuer",
           outputs: [
             {
               internalType: "bool",
               name: "",
-              type: "bool",
-            },
+              type: "bool"
+            }
           ],
           stateMutability: "nonpayable",
-          type: "function",
+          type: "function"
         },
         {
           inputs: [
             {
               internalType: "address",
               name: "_userPublicKey",
-              type: "address",
-            },
+              type: "address"
+            }
           ],
           name: "enableUser",
           outputs: [
             {
               internalType: "bool",
               name: "",
-              type: "bool",
-            },
+              type: "bool"
+            }
           ],
           stateMutability: "nonpayable",
-          type: "function",
+          type: "function"
         },
         {
           inputs: [],
@@ -402,66 +402,66 @@ const config = {
                 {
                   internalType: "string",
                   name: "id",
-                  type: "string",
+                  type: "string"
                 },
                 {
                   internalType: "string",
                   name: "name",
-                  type: "string",
+                  type: "string"
                 },
                 {
                   internalType: "string",
                   name: "typeOfCertificate",
-                  type: "string",
+                  type: "string"
                 },
                 {
                   internalType: "string",
                   name: "version",
-                  type: "string",
+                  type: "string"
                 },
                 {
                   internalType: "string",
                   name: "issuedDate",
-                  type: "string",
+                  type: "string"
                 },
                 {
                   internalType: "string",
                   name: "expiresAt",
-                  type: "string",
+                  type: "string"
                 },
                 {
                   internalType: "bool",
                   name: "isPermanent",
-                  type: "bool",
+                  type: "bool"
                 },
                 {
                   internalType: "bool",
                   name: "isPublic",
-                  type: "bool",
+                  type: "bool"
                 },
                 {
                   internalType: "bool",
                   name: "isActive",
-                  type: "bool",
+                  type: "bool"
                 },
                 {
                   internalType: "address",
                   name: "issuerPublicKey",
-                  type: "address",
+                  type: "address"
                 },
                 {
                   internalType: "address",
                   name: "userPublicKey",
-                  type: "address",
-                },
+                  type: "address"
+                }
               ],
               internalType: "struct Certifi.Certificate[]",
               name: "",
-              type: "tuple[]",
-            },
+              type: "tuple[]"
+            }
           ],
           stateMutability: "view",
-          type: "function",
+          type: "function"
         },
         {
           inputs: [],
@@ -472,115 +472,115 @@ const config = {
                 {
                   internalType: "string",
                   name: "id",
-                  type: "string",
+                  type: "string"
                 },
                 {
                   internalType: "string",
                   name: "name",
-                  type: "string",
+                  type: "string"
                 },
                 {
                   internalType: "string",
                   name: "typeOfCertificate",
-                  type: "string",
+                  type: "string"
                 },
                 {
                   internalType: "string",
                   name: "version",
-                  type: "string",
+                  type: "string"
                 },
                 {
                   internalType: "string",
                   name: "issuedDate",
-                  type: "string",
+                  type: "string"
                 },
                 {
                   internalType: "string",
                   name: "expiresAt",
-                  type: "string",
+                  type: "string"
                 },
                 {
                   internalType: "bool",
                   name: "isPermanent",
-                  type: "bool",
+                  type: "bool"
                 },
                 {
                   internalType: "bool",
                   name: "isPublic",
-                  type: "bool",
+                  type: "bool"
                 },
                 {
                   internalType: "bool",
                   name: "isActive",
-                  type: "bool",
+                  type: "bool"
                 },
                 {
                   internalType: "address",
                   name: "issuerPublicKey",
-                  type: "address",
+                  type: "address"
                 },
                 {
                   internalType: "address",
                   name: "userPublicKey",
-                  type: "address",
-                },
+                  type: "address"
+                }
               ],
               internalType: "struct Certifi.Certificate[]",
               name: "",
-              type: "tuple[]",
-            },
+              type: "tuple[]"
+            }
           ],
           stateMutability: "view",
-          type: "function",
+          type: "function"
         },
         {
           inputs: [
             {
               internalType: "address",
               name: "_address",
-              type: "address",
-            },
+              type: "address"
+            }
           ],
           name: "getIssuerData",
           outputs: [
             {
               internalType: "address",
               name: "",
-              type: "address",
+              type: "address"
             },
             {
               internalType: "string",
               name: "",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "string",
               name: "",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "string",
               name: "",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "bool",
               name: "",
-              type: "bool",
+              type: "bool"
             },
             {
               internalType: "bool",
               name: "",
-              type: "bool",
+              type: "bool"
             },
             {
               internalType: "bool",
               name: "",
-              type: "bool",
-            },
+              type: "bool"
+            }
           ],
           stateMutability: "view",
-          type: "function",
+          type: "function"
         },
         {
           inputs: [],
@@ -589,323 +589,373 @@ const config = {
             {
               internalType: "address",
               name: "",
-              type: "address",
-            },
+              type: "address"
+            }
           ],
           stateMutability: "view",
-          type: "function",
+          type: "function"
         },
         {
           inputs: [
             {
               internalType: "address",
               name: "_address",
-              type: "address",
-            },
+              type: "address"
+            }
           ],
           name: "getUserData",
           outputs: [
             {
               internalType: "string",
               name: "",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "string",
               name: "",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "string",
               name: "",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "bool",
               name: "",
-              type: "bool",
+              type: "bool"
             },
             {
               internalType: "address",
               name: "",
-              type: "address",
+              type: "address"
             },
             {
               internalType: "string",
               name: "",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "string",
               name: "",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "bool",
               name: "",
-              type: "bool",
-            },
+              type: "bool"
+            }
           ],
           stateMutability: "view",
-          type: "function",
+          type: "function"
         },
         {
           inputs: [
             {
               internalType: "string",
               name: "_id",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "string",
               name: "_name",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "string",
               name: "_typeOfCertificate",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "string",
               name: "_version",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "string",
               name: "_issuedDate",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "string",
               name: "_expiresAt",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "bool",
               name: "_isPermanent",
-              type: "bool",
+              type: "bool"
             },
             {
               internalType: "bool",
               name: "_isPublic",
-              type: "bool",
+              type: "bool"
             },
             {
               internalType: "bool",
               name: "_isActive",
-              type: "bool",
+              type: "bool"
             },
             {
               internalType: "address",
               name: "_userPublicKey",
-              type: "address",
-            },
+              type: "address"
+            }
           ],
           name: "issueCertificate",
           outputs: [
             {
               internalType: "bool",
               name: "",
-              type: "bool",
-            },
+              type: "bool"
+            }
           ],
           stateMutability: "nonpayable",
-          type: "function",
+          type: "function"
         },
         {
           inputs: [
             {
               internalType: "address",
               name: "",
-              type: "address",
-            },
+              type: "address"
+            }
           ],
           name: "issuers",
           outputs: [
             {
               internalType: "address",
               name: "publicKey",
-              type: "address",
+              type: "address"
             },
             {
               internalType: "string",
               name: "typeOfIssuer",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "string",
               name: "org",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "string",
               name: "name",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "bool",
               name: "isApproved",
-              type: "bool",
+              type: "bool"
             },
             {
               internalType: "bool",
               name: "isActive",
-              type: "bool",
+              type: "bool"
             },
             {
               internalType: "bool",
               name: "issuerCreated",
-              type: "bool",
-            },
+              type: "bool"
+            }
           ],
           stateMutability: "view",
-          type: "function",
+          type: "function"
         },
         {
           inputs: [
             {
               internalType: "string",
               name: "_certificateId",
-              type: "string",
-            },
+              type: "string"
+            }
           ],
           name: "revokeCertificate",
           outputs: [
             {
               internalType: "bool",
               name: "",
-              type: "bool",
-            },
+              type: "bool"
+            }
           ],
           stateMutability: "nonpayable",
-          type: "function",
+          type: "function"
         },
         {
           inputs: [
             {
               internalType: "string",
               name: "_certificateId",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "address",
               name: "_userId",
-              type: "address",
-            },
+              type: "address"
+            }
           ],
           name: "revokeSharedCertificate",
           outputs: [
             {
               internalType: "bool",
               name: "",
-              type: "bool",
-            },
+              type: "bool"
+            }
           ],
           stateMutability: "nonpayable",
-          type: "function",
+          type: "function"
         },
         {
           inputs: [
             {
               internalType: "string",
               name: "_certificateId",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "address",
               name: "_userId",
-              type: "address",
-            },
+              type: "address"
+            }
           ],
           name: "shareCertificate",
           outputs: [
             {
               internalType: "bool",
               name: "",
-              type: "bool",
-            },
+              type: "bool"
+            }
           ],
           stateMutability: "nonpayable",
-          type: "function",
+          type: "function"
         },
         {
           inputs: [
             {
               internalType: "address",
               name: "",
-              type: "address",
-            },
+              type: "address"
+            }
           ],
           name: "users",
           outputs: [
             {
               internalType: "string",
               name: "firstName",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "string",
               name: "lastName",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "string",
               name: "gender",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "bool",
               name: "isActive",
-              type: "bool",
+              type: "bool"
             },
             {
               internalType: "address",
               name: "publicKey",
-              type: "address",
+              type: "address"
             },
             {
               internalType: "string",
               name: "typeOfUser",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "string",
               name: "location",
-              type: "string",
+              type: "string"
             },
             {
               internalType: "bool",
               name: "userCreated",
-              type: "bool",
-            },
+              type: "bool"
+            }
           ],
           stateMutability: "view",
-          type: "function",
+          type: "function"
         },
         {
           inputs: [
             {
               internalType: "string",
               name: "_certificateId",
-              type: "string",
-            },
+              type: "string"
+            }
           ],
           name: "verifyCertificate",
           outputs: [
             {
-              internalType: "bool",
-              name: "",
-              type: "bool",
+              internalType: "string",
+              name: "id",
+              type: "string"
             },
+            {
+              internalType: "string",
+              name: "name",
+              type: "string"
+            },
+            {
+              internalType: "string",
+              name: "typeOfCertificate",
+              type: "string"
+            },
+            {
+              internalType: "string",
+              name: "version",
+              type: "string"
+            },
+            {
+              internalType: "string",
+              name: "issuedDate",
+              type: "string"
+            },
+            {
+              internalType: "string",
+              name: "expiresAt",
+              type: "string"
+            },
+            {
+              internalType: "bool",
+              name: "isPermanent",
+              type: "bool"
+            },
+            {
+              internalType: "bool",
+              name: "isPublic",
+              type: "bool"
+            },
+            {
+              internalType: "bool",
+              name: "isActive",
+              type: "bool"
+            },
+            {
+              internalType: "address",
+              name: "issuerPublicKey",
+              type: "address"
+            },
+            {
+              internalType: "address",
+              name: "userPublicKey",
+              type: "address"
+            }
           ],
           stateMutability: "view",
-          type: "function",
-        },
-      ],
+          type: "function"
+        }
+      ]
     },
-    network: "ropsten",
-  },
+    network: "ropsten"
+  }
 };
 
 export default config;
