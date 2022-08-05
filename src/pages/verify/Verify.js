@@ -1,16 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Search from "./Search";
 import { verifyCertificate } from "../../helpers/functions";
 import { GlobalContext } from "../../context/context";
 
 const Verify = () => {
   const { Contract, userType } = useContext(GlobalContext);
+  const [certificate, setCertificate] = useState(null);
 
   const search = async (certId) => {
     if (!userType) alert("Please signup to verify the certificate");
     console.log(certId, "certId");
-    const isVerified = await verifyCertificate(Contract, certId);
-    console.log(isVerified, "isVerified");
+    const certificateDetails = await verifyCertificate(Contract, certId);
+    console.log(certificateDetails, "isVerified");
+    certificateDetails && setCertificate(certificateDetails);
   };
   return (
     <section className="w-full py-12 bg-white lg:py-24">
@@ -21,6 +23,8 @@ const Verify = () => {
           </div>
         </div>
         <Search search={search} />
+        {/** Render Certificate Here */}
+        {certificate && <h4>Certificate ID: {certificate.id}</h4>}
       </div>
     </section>
   );

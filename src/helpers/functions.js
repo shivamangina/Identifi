@@ -205,8 +205,19 @@ export const getSharedCertificatesByUser = async (Contract, address) => {
 
 export const verifyCertificate = async (Contract, certId) => {
   try {
-    const isCertValid = await Contract.verifyCertificate(certId);
-    return isCertValid;
+    const certificateDataUnFormatted = await Contract.verifyCertificate(certId);
+    const certificateData = {};
+    if (certificateDataUnFormatted && certificateDataUnFormatted[4]) {
+      certificateData.firstName = certificateDataUnFormatted[0];
+      certificateData.lastName = certificateDataUnFormatted[1];
+      certificateData.gender = certificateDataUnFormatted[2];
+      certificateData.isActive = certificateDataUnFormatted[3];
+      certificateData.publicKey = certificateDataUnFormatted[4];
+      certificateData.typeOfUser = certificateDataUnFormatted[5];
+      certificateData.location = certificateDataUnFormatted[6];
+      certificateData.userCreated = certificateDataUnFormatted[7];
+    }
+    return certificateData;
   } catch (error) {
     console.error(error.message);
   }
