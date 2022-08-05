@@ -8,8 +8,31 @@ import { getAllCreators, getLoggedInUser, addNewUserOnLogin } from "../helpers/f
 
 import mainLogo from "./logo.png";
 
+const paths = [
+  {
+    path: "/user/self",
+    name: "My Certificates",
+    userType: "USER"
+  },
+  {
+    path: "/user/shared",
+    name: "Shared Certificates",
+    userType: "USER"
+  },
+  {
+    path: "/issuer/issue-new",
+    name: "Issue New Certificate",
+    userType: "ISSUER"
+  },
+  {
+    path: "/issuer/issued",
+    name: "Issued Certificates",
+    userType: "ISSUER"
+  }
+];
+
 export default function Header() {
-  const { accounts, addWeb3ProviderToContext, addUserInfo, addCreatorData, userInfo, Contract } = useContext(GlobalContext);
+  const { accounts, addWeb3ProviderToContext, addUserInfo, addCreatorData, userInfo, Contract, userType } = useContext(GlobalContext);
 
   const doAuth = async () => {
     await window.ethereum.enable();
@@ -53,12 +76,15 @@ export default function Header() {
             </span>
           </Link>
           <nav className="flex flex-wrap items-center mb-5 text-base md:mb-0 md:pl-8 md:ml-8 md:border-l md:border-gray-200">
-            <Link to="/creator/discover" className="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">
-              My Certificates
-            </Link>
-            <Link to="/analytics/dashboard/user" className="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">
-              Shared with me
-            </Link>
+            {paths
+              .filter((_l) => {
+                _l.userType === userType;
+              })
+              .map(({ path, name }) => (
+                <Link key={path + name} to={path} className="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">
+                  {name}
+                </Link>
+              ))}
           </nav>
         </div>
 
