@@ -37,12 +37,14 @@ const App = () => {
           await setUserType({ userType });
         }
 
-        // check if connected wallet is user or not. If he is user then set his data and usertype to user
-        const userData = await getUserData(Contract, accounts[0]);
-        userData && (await addUserData({ userData }));
-        if (userData) {
-          const userType = "USER";
-          await setUserType({ userType });
+        if (!issuerData) {
+          // check if connected wallet is user or not. If he is user then set his data and usertype to user
+          const userData = await getUserData(Contract, accounts[0]);
+          userData && (await addUserData({ userData }));
+          if (userData) {
+            const userType = "USER";
+            await setUserType({ userType });
+          }
         }
 
         setTimeout(() => {
