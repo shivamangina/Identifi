@@ -3,7 +3,7 @@ import { GlobalContext } from "../../context/context";
 import { getCertificatesByUser } from "../../helpers/functions";
 
 export default function SelfCertificates() {
-  const { Contract, userData } = useContext(GlobalContext);
+  const { Contract, userData, accounts } = useContext(GlobalContext);
 
   // Dummy Data
 
@@ -23,7 +23,7 @@ export default function SelfCertificates() {
     (async () => {
       try {
         console.log(userData.firstName, "User");
-        const issuedCertificates = await getCertificatesByUser(Contract);
+        const issuedCertificates = await getCertificatesByUser(Contract, accounts[0]);
         console.log(issuedCertificates, "issuedCertificates");
       } catch (error) {
         console.error(error.message);

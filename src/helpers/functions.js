@@ -147,14 +147,14 @@ export const getCertificatesByIssuer = async (Contract) => {
   }
 };
 
-export const getCertificatesByUser = async (Contract) => {
+export const getCertificatesByUser = async (Contract, address) => {
   try {
     const certificatesUnFormatted = await Contract.getCertificatesByUser();
     const certificates = [];
     for (let index = 0; index < certificatesUnFormatted.length; index++) {
       const certItem = certificatesUnFormatted[index];
       const cert = {};
-      if (certItem) {
+      if (certItem && certItem[10] == address) {
         cert.id = certItem[0];
         cert.name = certItem[1];
         cert.typeOfCertificate = certItem[2];
@@ -167,7 +167,7 @@ export const getCertificatesByUser = async (Contract) => {
         cert.issuerPublicKey = certItem[9];
         cert.userPublicKey = certItem[10];
       }
-      cert && certificates.push(cert);
+      cert && Object.keys(cert).length !== 0 && certificates.push(cert);
     }
     return certificates;
   } catch (error) {
@@ -175,14 +175,14 @@ export const getCertificatesByUser = async (Contract) => {
   }
 };
 
-export const getSharedCertificatesByUser = async (Contract) => {
+export const getSharedCertificatesByUser = async (Contract, address) => {
   try {
     const certificatesUnFormatted = await Contract.getCertificatesByUser();
     const certificates = [];
     for (let index = 0; index < certificatesUnFormatted.length; index++) {
       const certItem = certificatesUnFormatted[index];
       const cert = {};
-      if (certItem) {
+      if (certItem && certItem[10] !== address) {
         cert.id = certItem[0];
         cert.name = certItem[1];
         cert.typeOfCertificate = certItem[2];
@@ -195,7 +195,7 @@ export const getSharedCertificatesByUser = async (Contract) => {
         cert.issuerPublicKey = certItem[9];
         cert.userPublicKey = certItem[10];
       }
-      cert && certificates.push(cert);
+      cert && Object.keys(cert).length !== 0 && certificates.push(cert);
     }
     return certificates;
   } catch (error) {
