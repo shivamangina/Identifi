@@ -1,530 +1,7 @@
 const config = {
   DEPLOYED_CONTRACT: {
-    GANACHE: {
-      CONTRACT_ADDRESS: "0x3c5124Ad8041C0e1DaD66F39394b31eaBcC3073D",
-      ABI: [
-        {
-          anonymous: false,
-          inputs: [
-            {
-              indexed: true,
-              internalType: "address",
-              name: "oldOwner",
-              type: "address",
-            },
-            {
-              indexed: true,
-              internalType: "address",
-              name: "newOwner",
-              type: "address",
-            },
-          ],
-          name: "OwnerSet",
-          type: "event",
-        },
-        {
-          inputs: [
-            {
-              internalType: "address",
-              name: "newOwner",
-              type: "address",
-            },
-          ],
-          name: "changeOwner",
-          outputs: [],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "string[]",
-              name: "_tags",
-              type: "string[]",
-            },
-            {
-              internalType: "string",
-              name: "_photo",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "_description",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "_emailId",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "_website",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "_linkedIn",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "_instagram",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "_twitter",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "_country",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "_name",
-              type: "string",
-            },
-          ],
-          name: "createOrUpdateCreator",
-          outputs: [
-            {
-              internalType: "bool",
-              name: "",
-              type: "bool",
-            },
-          ],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "string",
-              name: "_name",
-              type: "string",
-            },
-          ],
-          name: "createUser",
-          outputs: [
-            {
-              internalType: "bool",
-              name: "",
-              type: "bool",
-            },
-          ],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "address",
-              name: "",
-              type: "address",
-            },
-          ],
-          name: "creators",
-          outputs: [
-            {
-              internalType: "string",
-              name: "photo",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "description",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "emailId",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "website",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "linkedIn",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "instagram",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "twitter",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "country",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "name",
-              type: "string",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "address",
-              name: "_creator",
-              type: "address",
-            },
-          ],
-          name: "disableUser",
-          outputs: [
-            {
-              internalType: "bool",
-              name: "",
-              type: "bool",
-            },
-          ],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "address payable",
-              name: "_creator",
-              type: "address",
-            },
-            {
-              internalType: "uint256",
-              name: "_price",
-              type: "uint256",
-            },
-          ],
-          name: "donate",
-          outputs: [
-            {
-              internalType: "bool",
-              name: "",
-              type: "bool",
-            },
-          ],
-          stateMutability: "payable",
-          type: "function",
-        },
-        {
-          inputs: [],
-          name: "getAllCreatorsList",
-          outputs: [
-            {
-              internalType: "address[]",
-              name: "",
-              type: "address[]",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-        {
-          inputs: [],
-          name: "getContractBalance",
-          outputs: [
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "address",
-              name: "_address",
-              type: "address",
-            },
-          ],
-          name: "getCreatorInfo",
-          outputs: [
-            {
-              internalType: "string[]",
-              name: "",
-              type: "string[]",
-            },
-            {
-              internalType: "string",
-              name: "",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "",
-              type: "string",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-        {
-          inputs: [],
-          name: "getOwner",
-          outputs: [
-            {
-              internalType: "address",
-              name: "",
-              type: "address",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "address",
-              name: "_address",
-              type: "address",
-            },
-          ],
-          name: "getUserData",
-          outputs: [
-            {
-              internalType: "address",
-              name: "",
-              type: "address",
-            },
-            {
-              internalType: "string",
-              name: "",
-              type: "string",
-            },
-            {
-              internalType: "bool",
-              name: "",
-              type: "bool",
-            },
-            {
-              internalType: "bool",
-              name: "",
-              type: "bool",
-            },
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "address",
-              name: "",
-              type: "address",
-            },
-            {
-              internalType: "address",
-              name: "",
-              type: "address",
-            },
-          ],
-          name: "receivedFundsList",
-          outputs: [
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "address",
-              name: "",
-              type: "address",
-            },
-            {
-              internalType: "address",
-              name: "",
-              type: "address",
-            },
-          ],
-          name: "sentFundsList",
-          outputs: [
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-          ],
-          name: "totalCreatorsList",
-          outputs: [
-            {
-              internalType: "address",
-              name: "",
-              type: "address",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "address",
-              name: "",
-              type: "address",
-            },
-          ],
-          name: "users",
-          outputs: [
-            {
-              internalType: "address payable",
-              name: "walletAddress",
-              type: "address",
-            },
-            {
-              internalType: "string",
-              name: "name",
-              type: "string",
-            },
-            {
-              internalType: "bool",
-              name: "isDisabled",
-              type: "bool",
-            },
-            {
-              internalType: "bool",
-              name: "isCreator",
-              type: "bool",
-            },
-            {
-              internalType: "uint256",
-              name: "totalFundContributorsCount",
-              type: "uint256",
-            },
-            {
-              internalType: "uint256",
-              name: "totalFundsReceived",
-              type: "uint256",
-            },
-            {
-              internalType: "uint256",
-              name: "totalCreatorsFundedCount",
-              type: "uint256",
-            },
-            {
-              internalType: "uint256",
-              name: "totalFundsSent",
-              type: "uint256",
-            },
-            {
-              internalType: "uint256",
-              name: "withdrawbleBalance",
-              type: "uint256",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "uint256",
-              name: "_withdrawAmount",
-              type: "uint256",
-            },
-          ],
-          name: "withdraw",
-          outputs: [],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
-      ],
-    },
     ROPSTEN: {
-      CONTRACT_ADDRESS: "0xDA5e8CD0C3bAfF51A44dA397A7827A966c43AE42",
+      CONTRACT_ADDRESS: "0xA731D8D40965090aD96179b21136A1BC9ED77E5F",
       ABI: [
         {
           anonymous: false,
@@ -546,6 +23,215 @@ const config = {
           type: "event",
         },
         {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "address",
+              name: "userPublicKey",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "address",
+              name: "issuerPublicKey",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "id",
+              type: "string",
+            },
+          ],
+          name: "certificateIssued",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "string",
+              name: "certificateId",
+              type: "string",
+            },
+          ],
+          name: "certificateRevoked",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "address",
+              name: "issuerPublicKey",
+              type: "address",
+            },
+          ],
+          name: "issuerCreated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "address",
+              name: "issuerId",
+              type: "address",
+            },
+          ],
+          name: "issuerDisabled",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "address",
+              name: "issuerId",
+              type: "address",
+            },
+          ],
+          name: "issuerEnabled",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "address",
+              name: "userPublicKey",
+              type: "address",
+            },
+          ],
+          name: "userCreated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "address",
+              name: "userPublicKey",
+              type: "address",
+            },
+          ],
+          name: "userDisabled",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "address",
+              name: "userPublicKey",
+              type: "address",
+            },
+          ],
+          name: "userEnabled",
+          type: "event",
+        },
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "accessList",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "certificates",
+          outputs: [
+            {
+              internalType: "string",
+              name: "id",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "name",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "typeOfCertificate",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "version",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "issuedDate",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "expiresAt",
+              type: "string",
+            },
+            {
+              internalType: "bool",
+              name: "isPermanent",
+              type: "bool",
+            },
+            {
+              internalType: "bool",
+              name: "isPublic",
+              type: "bool",
+            },
+            {
+              internalType: "bool",
+              name: "isActive",
+              type: "bool",
+            },
+            {
+              internalType: "address",
+              name: "issuerPublicKey",
+              type: "address",
+            },
+            {
+              internalType: "address",
+              name: "userPublicKey",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
           inputs: [
             {
               internalType: "address",
@@ -561,48 +247,18 @@ const config = {
         {
           inputs: [
             {
-              internalType: "string[]",
-              name: "_tags",
-              type: "string[]",
+              internalType: "address",
+              name: "_publicKey",
+              type: "address",
             },
             {
               internalType: "string",
-              name: "_photo",
+              name: "_typeOfIssuer",
               type: "string",
             },
             {
               internalType: "string",
-              name: "_description",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "_emailId",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "_website",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "_linkedIn",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "_instagram",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "_twitter",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "_country",
+              name: "_org",
               type: "string",
             },
             {
@@ -611,7 +267,7 @@ const config = {
               type: "string",
             },
           ],
-          name: "createOrUpdateCreator",
+          name: "createIssuer",
           outputs: [
             {
               internalType: "bool",
@@ -626,7 +282,27 @@ const config = {
           inputs: [
             {
               internalType: "string",
-              name: "_name",
+              name: "_firstName",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_lastName",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_gender",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_typeOfUser",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_location",
               type: "string",
             },
           ],
@@ -645,66 +321,26 @@ const config = {
           inputs: [
             {
               internalType: "address",
-              name: "",
+              name: "_issuerId",
               type: "address",
             },
           ],
-          name: "creators",
+          name: "disableIssuer",
           outputs: [
             {
-              internalType: "string",
-              name: "photo",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "description",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "emailId",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "website",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "linkedIn",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "instagram",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "twitter",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "country",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "name",
-              type: "string",
+              internalType: "bool",
+              name: "",
+              type: "bool",
             },
           ],
-          stateMutability: "view",
+          stateMutability: "nonpayable",
           type: "function",
         },
         {
           inputs: [
             {
               internalType: "address",
-              name: "_creator",
+              name: "_userPublicKey",
               type: "address",
             },
           ],
@@ -722,17 +358,12 @@ const config = {
         {
           inputs: [
             {
-              internalType: "address payable",
-              name: "_creator",
+              internalType: "address",
+              name: "_issuerId",
               type: "address",
             },
-            {
-              internalType: "uint256",
-              name: "_price",
-              type: "uint256",
-            },
           ],
-          name: "donate",
+          name: "enableIssuer",
           outputs: [
             {
               internalType: "bool",
@@ -740,17 +371,93 @@ const config = {
               type: "bool",
             },
           ],
-          stateMutability: "payable",
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_userPublicKey",
+              type: "address",
+            },
+          ],
+          name: "enableUser",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "nonpayable",
           type: "function",
         },
         {
           inputs: [],
-          name: "getAllCreatorsList",
+          name: "getCertificatesByIssuer",
           outputs: [
             {
-              internalType: "address[]",
+              components: [
+                {
+                  internalType: "string",
+                  name: "id",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "name",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "typeOfCertificate",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "version",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "issuedDate",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "expiresAt",
+                  type: "string",
+                },
+                {
+                  internalType: "bool",
+                  name: "isPermanent",
+                  type: "bool",
+                },
+                {
+                  internalType: "bool",
+                  name: "isPublic",
+                  type: "bool",
+                },
+                {
+                  internalType: "bool",
+                  name: "isActive",
+                  type: "bool",
+                },
+                {
+                  internalType: "address",
+                  name: "issuerPublicKey",
+                  type: "address",
+                },
+                {
+                  internalType: "address",
+                  name: "userPublicKey",
+                  type: "address",
+                },
+              ],
+              internalType: "struct Certifi.Certificate[]",
               name: "",
-              type: "address[]",
+              type: "tuple[]",
             },
           ],
           stateMutability: "view",
@@ -758,12 +465,69 @@ const config = {
         },
         {
           inputs: [],
-          name: "getContractBalance",
+          name: "getCertificatesByUser",
           outputs: [
             {
-              internalType: "uint256",
+              components: [
+                {
+                  internalType: "string",
+                  name: "id",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "name",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "typeOfCertificate",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "version",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "issuedDate",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "expiresAt",
+                  type: "string",
+                },
+                {
+                  internalType: "bool",
+                  name: "isPermanent",
+                  type: "bool",
+                },
+                {
+                  internalType: "bool",
+                  name: "isPublic",
+                  type: "bool",
+                },
+                {
+                  internalType: "bool",
+                  name: "isActive",
+                  type: "bool",
+                },
+                {
+                  internalType: "address",
+                  name: "issuerPublicKey",
+                  type: "address",
+                },
+                {
+                  internalType: "address",
+                  name: "userPublicKey",
+                  type: "address",
+                },
+              ],
+              internalType: "struct Certifi.Certificate[]",
               name: "",
-              type: "uint256",
+              type: "tuple[]",
             },
           ],
           stateMutability: "view",
@@ -777,12 +541,12 @@ const config = {
               type: "address",
             },
           ],
-          name: "getCreatorInfo",
+          name: "getIssuerData",
           outputs: [
             {
-              internalType: "string[]",
+              internalType: "address",
               name: "",
-              type: "string[]",
+              type: "address",
             },
             {
               internalType: "string",
@@ -800,34 +564,19 @@ const config = {
               type: "string",
             },
             {
-              internalType: "string",
+              internalType: "bool",
               name: "",
-              type: "string",
+              type: "bool",
             },
             {
-              internalType: "string",
+              internalType: "bool",
               name: "",
-              type: "string",
+              type: "bool",
             },
             {
-              internalType: "string",
+              internalType: "bool",
               name: "",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "",
-              type: "string",
+              type: "bool",
             },
           ],
           stateMutability: "view",
@@ -857,9 +606,14 @@ const config = {
           name: "getUserData",
           outputs: [
             {
-              internalType: "address",
+              internalType: "string",
               name: "",
-              type: "address",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
             },
             {
               internalType: "string",
@@ -872,37 +626,91 @@ const config = {
               type: "bool",
             },
             {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+            {
               internalType: "bool",
               name: "",
               type: "bool",
             },
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
           ],
           stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "_id",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_name",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_typeOfCertificate",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_version",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_issuedDate",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_expiresAt",
+              type: "string",
+            },
+            {
+              internalType: "bool",
+              name: "_isPermanent",
+              type: "bool",
+            },
+            {
+              internalType: "bool",
+              name: "_isPublic",
+              type: "bool",
+            },
+            {
+              internalType: "bool",
+              name: "_isActive",
+              type: "bool",
+            },
+            {
+              internalType: "address",
+              name: "_userPublicKey",
+              type: "address",
+            },
+          ],
+          name: "issueCertificate",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "nonpayable",
           type: "function",
         },
         {
@@ -912,18 +720,43 @@ const config = {
               name: "",
               type: "address",
             },
-            {
-              internalType: "address",
-              name: "",
-              type: "address",
-            },
           ],
-          name: "receivedFundsList",
+          name: "issuers",
           outputs: [
             {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
+              internalType: "address",
+              name: "publicKey",
+              type: "address",
+            },
+            {
+              internalType: "string",
+              name: "typeOfIssuer",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "org",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "name",
+              type: "string",
+            },
+            {
+              internalType: "bool",
+              name: "isApproved",
+              type: "bool",
+            },
+            {
+              internalType: "bool",
+              name: "isActive",
+              type: "bool",
+            },
+            {
+              internalType: "bool",
+              name: "issuerCreated",
+              type: "bool",
             },
           ],
           stateMutability: "view",
@@ -932,44 +765,68 @@ const config = {
         {
           inputs: [
             {
-              internalType: "address",
-              name: "",
-              type: "address",
-            },
-            {
-              internalType: "address",
-              name: "",
-              type: "address",
+              internalType: "string",
+              name: "_certificateId",
+              type: "string",
             },
           ],
-          name: "sentFundsList",
+          name: "revokeCertificate",
           outputs: [
             {
-              internalType: "uint256",
+              internalType: "bool",
               name: "",
-              type: "uint256",
+              type: "bool",
             },
           ],
-          stateMutability: "view",
+          stateMutability: "nonpayable",
           type: "function",
         },
         {
           inputs: [
             {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
+              internalType: "string",
+              name: "_certificateId",
+              type: "string",
             },
-          ],
-          name: "totalCreatorsList",
-          outputs: [
             {
               internalType: "address",
-              name: "",
+              name: "_userId",
               type: "address",
             },
           ],
-          stateMutability: "view",
+          name: "revokeSharedCertificate",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "_certificateId",
+              type: "string",
+            },
+            {
+              internalType: "address",
+              name: "_userId",
+              type: "address",
+            },
+          ],
+          name: "shareCertificate",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "nonpayable",
           type: "function",
         },
         {
@@ -983,49 +840,44 @@ const config = {
           name: "users",
           outputs: [
             {
-              internalType: "address payable",
-              name: "walletAddress",
-              type: "address",
+              internalType: "string",
+              name: "firstName",
+              type: "string",
             },
             {
               internalType: "string",
-              name: "name",
+              name: "lastName",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "gender",
               type: "string",
             },
             {
               internalType: "bool",
-              name: "isDisabled",
+              name: "isActive",
               type: "bool",
+            },
+            {
+              internalType: "address",
+              name: "publicKey",
+              type: "address",
+            },
+            {
+              internalType: "string",
+              name: "typeOfUser",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "location",
+              type: "string",
             },
             {
               internalType: "bool",
-              name: "isCreator",
+              name: "userCreated",
               type: "bool",
-            },
-            {
-              internalType: "uint256",
-              name: "totalFundContributorsCount",
-              type: "uint256",
-            },
-            {
-              internalType: "uint256",
-              name: "totalFundsReceived",
-              type: "uint256",
-            },
-            {
-              internalType: "uint256",
-              name: "totalCreatorsFundedCount",
-              type: "uint256",
-            },
-            {
-              internalType: "uint256",
-              name: "totalFundsSent",
-              type: "uint256",
-            },
-            {
-              internalType: "uint256",
-              name: "withdrawbleBalance",
-              type: "uint256",
             },
           ],
           stateMutability: "view",
@@ -1034,14 +886,20 @@ const config = {
         {
           inputs: [
             {
-              internalType: "uint256",
-              name: "_withdrawAmount",
-              type: "uint256",
+              internalType: "string",
+              name: "_certificateId",
+              type: "string",
             },
           ],
-          name: "withdraw",
-          outputs: [],
-          stateMutability: "nonpayable",
+          name: "verifyCertificate",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
           type: "function",
         },
       ],
