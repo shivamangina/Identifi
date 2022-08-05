@@ -39,15 +39,18 @@ export default function SharedCertificates() {
       <div className="max-w-6xl px-12 mx-auto text-center">
         <div className="space-y-12 md:text-center">
           <div className="max-w-3xl mb-20 space-y-5 sm:mx-auto sm:space-y-4">
-            <h2 className="relative text-4xl font-extrabold tracking-tight sm:text-5xl">Issued Certificates</h2>
+            <h2 className="relative text-4xl font-extrabold tracking-tight sm:text-5xl">Shared Certificates</h2>
           </div>
         </div>
 
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          {certificates &&
+          {certificates ? (
             certificates.map((item, i) => {
               return item.isActive && <Card data={item} key={i} />;
-            })}
+            })
+          ) : (
+            <>No Certificates Found</>
+          )}
         </div>
       </div>
     </section>
