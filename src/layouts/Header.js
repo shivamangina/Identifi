@@ -1,12 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { GlobalContext } from "../context/context";
 import { Link } from "react-router-dom";
 
 import { ethers } from "ethers";
 import Config from "../Config";
-import { getAllCreators, getLoggedInUser, addNewUserOnLogin } from "../helpers/functions";
+import { getAllCreators, getLoggedInUser } from "../helpers/functions";
+
+import SignUpForm from "../components/SignUpForm";
 
 import mainLogo from "./logo.png";
+import ReactModal from "../pages/ReactModal";
 
 const paths = [
   {
@@ -34,6 +37,8 @@ const paths = [
 export default function Header() {
   const { accounts, addWeb3ProviderToContext, addUserInfo, addCreatorData, userInfo, Contract, userType } = useContext(GlobalContext);
 
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
   const doAuth = async () => {
     await window.ethereum.enable();
     const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -58,9 +63,10 @@ export default function Header() {
 
   const signUp = async () => {
     // insert user if he is not in our records
-    if (!userInfo || !userInfo.name) {
-      await addNewUserOnLogin(Contract);
-    }
+    setModalIsOpen(true);
+    // if (!userInfo || !userInfo.name) {
+    //   await addNewUserOnLogin(Contract);
+    // }
   };
 
   return (
@@ -109,6 +115,13 @@ export default function Header() {
             Sign Up
           </button>
         )}
+        <ReactModal
+          modalIsOpen={modalIsOpen}
+          closeModal={() => {
+            setModalIsOpen(false);
+          }}
+          component={SignUpForm}
+        />
       </div>
     </section>
   );

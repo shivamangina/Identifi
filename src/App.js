@@ -7,6 +7,8 @@ import { getIssuerData, getUserData } from "./helpers/functions";
 import { ethers } from "ethers";
 import Config from "./Config";
 
+
+
 const App = () => {
   const { loading, addWeb3ProviderToContext, addIssuerData, setUserType, setLoading, addUserData } = useContext(GlobalContext);
 
@@ -57,7 +59,6 @@ const App = () => {
     })();
   }, []);
 
-  // eslint-disable-next-line no-constant-condition
   return <>{loading ? <Loader /> : <Routing />}</>;
 };
 

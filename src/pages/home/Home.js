@@ -2,10 +2,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as HeroIllustration } from "./Hero.svg";
+import ReactModal from "../ReactModal";
 
 export default function Home() {
   return (
     <>
+    <ReactModal/>
       <section className="px-2 py-20 bg-white md:px-0">
         <div className="container items-center max-w-6xl px-8 mx-auto xl:px-5">
           <div className="flex flex-wrap items-center sm:-mx-3">
@@ -44,7 +46,7 @@ export default function Home() {
                     </svg>
                   </Link>
                   <Link
-                    to="/creator/profile"
+                    to="/verify"
                     className="flex items-center px-6 py-3 text-gray-500 bg-gray-100 rounded-md hover:bg-gray-200 hover:text-gray-600"
                   >
                     Learn more
