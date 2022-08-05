@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function IssueCertificates() {
-  return (
-    <div>IssueCertificates</div>
-  )
+  return <div>IssueCertificates</div>;
 }

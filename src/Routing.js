@@ -25,25 +25,13 @@ function Routing() {
           <Route exact path="/verify" element={<Home />} />
           {/* Issuer Routes */}
 
-          <Route
-            path="/certificates/issuer/issued"
-            element={<IssuedCertificate />}
-          />
-          <Route
-            path="/certificates/issuer/issuenew"
-            element={<IssueCertificate />}
-          />
+          <Route path="/certificates/issuer/issued" element={<IssuedCertificate />} />
+          <Route path="/certificates/issuer/issuenew" element={<IssueCertificate />} />
 
           {/* User Routes */}
 
-          <Route
-            path="/certificates/user/self"
-            element={<SelfCertificates />}
-          />
-          <Route
-            path="/certificates/user/shared"
-            element={<SharedCertificates />}
-          />
+          <Route path="/certificates/user/self" element={<SelfCertificates />} />
+          <Route path="/certificates/user/shared" element={<SharedCertificates />} />
         </Routes>
         <Footer />
       </BrowserRouter>
