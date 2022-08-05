@@ -2,13 +2,14 @@
 export default (state, action) => {
   switch (action.type) {
     case "ADD_WEB3_PROVIDER":
-      const { provider, signer, accounts, Contract } = action.payload;
+      const { provider, signer, accounts, Contract, currentAccount } = action.payload;
       return {
         ...state,
         provider,
         signer,
         accounts,
-        Contract
+        Contract,
+        currentAccount
       };
     case "ADD_ISSUER_DATA":
       const { issuerData } = action.payload;
