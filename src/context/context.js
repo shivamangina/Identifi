@@ -15,16 +15,16 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
-  function addCreatorData(data) {
+  function addIssuerData(data) {
     dispatch({
-      type: "ADD_CREATOR_DATA",
+      type: "ADD_ISSUER_DATA",
       payload: data
     });
   }
 
-  function addUserInfo(data) {
+  function addUserData(data) {
     dispatch({
-      type: "ADD_USER_INFO",
+      type: "ADD_USER_DATA",
       payload: data
     });
   }
@@ -36,12 +36,20 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  function setUserType(data) {
+    dispatch({
+      type: "SET_USER_TYPE",
+      payload: data
+    });
+  }
+
   const value = {
     ...state,
     setLoading,
     addWeb3ProviderToContext,
-    addCreatorData,
-    addUserInfo
+    addIssuerData,
+    addUserData,
+    setUserType
   };
 
   return <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>;

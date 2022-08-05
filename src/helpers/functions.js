@@ -3,7 +3,7 @@ import { ethers } from "ethers";
 export const getAllCreators = async (Contract) => {
   try {
     const totalCreatorsAddresses = await Contract.getAllCreatorsList();
-    const creatorData = [];
+    const issuerData = [];
     for (let index = 0; index < totalCreatorsAddresses.length; index++) {
       const creatorAddress = totalCreatorsAddresses[index];
       const user = await Contract.getUserData(creatorAddress);
@@ -32,9 +32,9 @@ export const getAllCreators = async (Contract) => {
         userInfo.walletAddress = user[0];
         userInfo.name = creator[9];
       }
-      userInfo && Object.keys(userInfo).length !== 0 && creatorData.push(userInfo);
+      userInfo && Object.keys(userInfo).length !== 0 && issuerData.push(userInfo);
     }
-    return creatorData;
+    return issuerData;
   } catch (error) {
     console.log(error, "error");
   }
@@ -75,6 +75,25 @@ export const addNewUserOnLogin = async (Contract) => {
     const randomString = (Math.random() + 1).toString(36).substring(2);
     const userName = `mebloc_user_${randomString}`;
     await Contract.createUser(userName);
+  } catch (error) {
+    console.log(error, "error");
+  }
+};
+
+export const getIssuerData = async (Contract, address) => {
+  try {
+    const issuerDataUnFormatted = await Contract.getIssuerData(address);
+    const issuerData = {};
+    if (issuerDataUnFormatted && issuerDataUnFormatted[6]) {
+      issuerData.publicKey = issuerDataUnFormatted[0];
+      issuerData.typeOfIssuer = issuerDataUnFormatted[1];
+      issuerData.org = issuerDataUnFormatted[2];
+      issuerData.name = issuerDataUnFormatted[3];
+      issuerData.isApproved = issuerDataUnFormatted[4];
+      issuerData.isActive = issuerDataUnFormatted[5];
+      issuerData.issuerCreated = issuerDataUnFormatted[6];
+    }
+    return issuerData;
   } catch (error) {
     console.log(error, "error");
   }

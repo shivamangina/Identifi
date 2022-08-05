@@ -3,18 +3,12 @@ import Routing from "./Routing";
 import Loader from "./layouts/Loader";
 import "./App.css";
 import { GlobalContext } from "./context/context";
-import { getAllCreators, getLoggedInUser } from "./helpers/functions";
+import { getIssuerData } from "./helpers/functions";
 import { ethers } from "ethers";
 import Config from "./Config";
 
 const App = () => {
-  const {
-    loading,
-    addWeb3ProviderToContext,
-    addUserInfo,
-    addCreatorData,
-    setLoading,
-  } = useContext(GlobalContext);
+  const { loading, addWeb3ProviderToContext, addIssuerData, setUserType, setLoading } = useContext(GlobalContext);
 
   useEffect(() => {
     (async () => {
@@ -24,33 +18,24 @@ const App = () => {
         const accounts = await provider.listAccounts();
         const network = await provider.getNetwork();
         if (network.name !== Config.DEPLOYED_CONTRACT.network)
-          throw Error(
-            `You are using ${network.name}, Please switch to ${Config.DEPLOYED_CONTRACT.network} to use our App`
-          );
+          throw Error(`You are using ${network.name}, Please switch to ${Config.DEPLOYED_CONTRACT.network} to use our App`);
         const signer = provider.getSigner();
-        const Contract = new ethers.Contract(
-          Config.DEPLOYED_CONTRACT.ROPSTEN.CONTRACT_ADDRESS,
-          Config.DEPLOYED_CONTRACT.ROPSTEN.ABI,
-          signer
-        );
+        // Connect to the deployed contract
+        const Contract = new ethers.Contract(Config.DEPLOYED_CONTRACT.ROPSTEN.CONTRACT_ADDRESS, Config.DEPLOYED_CONTRACT.ROPSTEN.ABI, signer);
+        // Add web3 data to context
         await addWeb3ProviderToContext({
           provider,
           signer,
           accounts,
-          Contract,
-        });
-        const creatorData = await getAllCreators(Contract);
-        await addCreatorData({
-          creatorData,
-        });
-        const userInfo = await getLoggedInUser(
-          creatorData,
-          accounts[0],
           Contract
-        );
-        await addUserInfo({
-          userInfo,
         });
+        // check if connected wallet is issuer or not. If he is issuer then set his data and usertype to issuer
+        const issuerData = await getIssuerData(Contract, accounts[0]);
+        issuerData && (await addIssuerData({ issuerData }));
+        if (issuerData) {
+          const userType = "ISSUER";
+          await setUserType({ userType });
+        }
         setTimeout(() => {
           setLoading(false);
         }, 1000);
@@ -60,8 +45,6 @@ const App = () => {
       }
     })();
   }, []);
-
-  
 
   // eslint-disable-next-line no-constant-condition
   return <>{loading ? <Loader /> : <Routing />}</>;
