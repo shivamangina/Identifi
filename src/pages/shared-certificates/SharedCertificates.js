@@ -5,7 +5,7 @@ import Card from "../Card";
 
 export default function SharedCertificates() {
   const { Contract, userData, accounts } = useContext(GlobalContext);
-  const [certificates, setCertificates] = useState(null);
+  const [certificates, setCertificates] = useState([]);
 
   // Dummy Data
 
@@ -44,7 +44,7 @@ export default function SharedCertificates() {
         </div>
 
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          {certificates ? (
+          {certificates.length ? (
             certificates.map((item, i) => {
               return item.isActive && <Card data={item} key={i} />;
             })
