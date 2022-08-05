@@ -26,7 +26,7 @@ export default function IssuedCertificate() {
         const issuedCertificates = await getCertificatesByIssuer(Contract);
         console.log(issuedCertificates, "issuedCertificates");
       } catch (error) {
-        console.error(error);
+        console.error(error.message);
       }
     })();
   }, []);

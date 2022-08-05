@@ -36,7 +36,7 @@ export const getAllCreators = async (Contract) => {
     }
     return issuerData;
   } catch (error) {
-    console.log(error, "error");
+    console.error(error.message);
   }
 };
 
@@ -76,7 +76,7 @@ export const addNewUserOnLogin = async (Contract) => {
     const userName = `mebloc_user_${randomString}`;
     await Contract.createUser(userName);
   } catch (error) {
-    console.log(error, "error");
+    console.error(error.message);
   }
 };
 
@@ -95,7 +95,7 @@ export const getIssuerData = async (Contract, address) => {
     }
     return issuerData;
   } catch (error) {
-    console.log(error, "error");
+    console.error(error.message);
   }
 };
 
@@ -115,7 +115,7 @@ export const getUserData = async (Contract, address) => {
     }
     return userData;
   } catch (error) {
-    console.log(error, "error");
+    console.error(error.message);
   }
 };
 
@@ -143,6 +143,62 @@ export const getCertificatesByIssuer = async (Contract) => {
     }
     return certificates;
   } catch (error) {
-    console.log(error, "error");
+    console.error(error.message);
+  }
+};
+
+export const getCertificatesByUser = async (Contract) => {
+  try {
+    const certificatesUnFormatted = await Contract.getCertificatesByUser();
+    const certificates = [];
+    for (let index = 0; index < certificatesUnFormatted.length; index++) {
+      const certItem = certificatesUnFormatted[index];
+      const cert = {};
+      if (certItem) {
+        cert.id = certItem[0];
+        cert.name = certItem[1];
+        cert.typeOfCertificate = certItem[2];
+        cert.version = certItem[3];
+        cert.issuedDate = certItem[4];
+        cert.expiresAt = certItem[5];
+        cert.isPermanent = certItem[6];
+        cert.isPublic = certItem[7];
+        cert.isActive = certItem[8];
+        cert.issuerPublicKey = certItem[9];
+        cert.userPublicKey = certItem[10];
+      }
+      cert && certificates.push(cert);
+    }
+    return certificates;
+  } catch (error) {
+    console.error(error.message);
+  }
+};
+
+export const getSharedCertificatesByUser = async (Contract) => {
+  try {
+    const certificatesUnFormatted = await Contract.getCertificatesByUser();
+    const certificates = [];
+    for (let index = 0; index < certificatesUnFormatted.length; index++) {
+      const certItem = certificatesUnFormatted[index];
+      const cert = {};
+      if (certItem) {
+        cert.id = certItem[0];
+        cert.name = certItem[1];
+        cert.typeOfCertificate = certItem[2];
+        cert.version = certItem[3];
+        cert.issuedDate = certItem[4];
+        cert.expiresAt = certItem[5];
+        cert.isPermanent = certItem[6];
+        cert.isPublic = certItem[7];
+        cert.isActive = certItem[8];
+        cert.issuerPublicKey = certItem[9];
+        cert.userPublicKey = certItem[10];
+      }
+      cert && certificates.push(cert);
+    }
+    return certificates;
+  } catch (error) {
+    console.error(error.message);
   }
 };
