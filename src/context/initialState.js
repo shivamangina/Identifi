@@ -5,8 +5,9 @@ export const initialState = {
   Contract: null,
   loading: true,
   version: "1.0.0",
+  // Actual Data
   totalRecords: null,
-  creatorData: null,
-  totalCount: null,
-  userInfo: null
+  issuerData: null,
+  userData: null,
+  userType: null
 };
