@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../../context/context";
 import Search from "./Search";
-import CreatorCard from "../CreatorCard";
 
-const CreatorDiscover = () => {
-  const { creatorData } = useContext(GlobalContext);
+const Verify = () => {
+  const {} = useContext(GlobalContext);
   return (
     <section className="w-full py-12 bg-white lg:py-24">
       <div className="max-w-6xl px-12 mx-auto text-center">
@@ -14,16 +13,9 @@ const CreatorDiscover = () => {
           </div>
         </div>
         <Search />
-
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          {creatorData &&
-            creatorData.map((item, i) => {
-              return <CreatorCard data={item} key={i} />;
-            })}
-        </div>
       </div>
     </section>
   );
 };
 
-export default CreatorDiscover;
+export default Verify;
