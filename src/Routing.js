@@ -8,10 +8,10 @@ import Footer from "./layouts/Footer";
 import Home from "./pages/home/Home";
 /** Pages */
 import Profile from "./pages/profile/Profile";
-import IssuedCertificate from "./pages/certificates/issuer/IssuedCertificate";
-import IssueCertificate from "./pages/certificates/issuer/IssueCertificate";
-import SelfCertificates from "./pages/certificates/user/SelfCertificates";
-import SharedCertificates from "./pages/certificates/user/SharedCertificates";
+import IssuedCertificate from "./pages/issued-certificates/IssuedCertificate";
+import IssueCertificate from "./pages/issue-certificates/IssueCertificates";
+import SelfCertificates from "./pages/self-certificates/SelfCertificates";
+import SharedCertificates from "./pages/shared-certificates/SharedCertificates";
 
 function Routing() {
   return (
