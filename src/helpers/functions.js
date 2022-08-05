@@ -219,3 +219,12 @@ export const shareCertificate = async (Contract, certId, address) => {
     console.error(error.message);
   }
 };
+
+export const createUser = async (Contract, data) => {
+  try {
+    const { firstName, lastName, gender, typeOfUser, location } = data;
+    await Contract.shareCertificate(firstName, lastName, gender, typeOfUser, location);
+  } catch (error) {
+    console.error(error.message);
+  }
+};

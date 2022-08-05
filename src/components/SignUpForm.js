@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { createUser } from "../helpers/functions";
+import { GlobalContext } from "../context/context";
+
 export default function SignUpForm() {
   // get form data in react hooks
-  const [formData, setFormData] = React.useState({
+  const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     gender: "",
     typeOfUser: "",
     location: ""
   });
+  const { Contract } = useContext(GlobalContext);
 
   // create a form in react hooks
   const handleChange = (e) => {
@@ -15,9 +19,9 @@ export default function SignUpForm() {
   };
 
   // create a form in react hooks
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    await createUser(Contract, formData);
   };
 
   return (
@@ -48,7 +52,7 @@ export default function SignUpForm() {
         <button
           type="submit"
           className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          Sign in
+          Sign Up
         </button>
       </div>
     </form>
