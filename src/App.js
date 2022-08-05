@@ -3,12 +3,12 @@ import Routing from "./Routing";
 import Loader from "./layouts/Loader";
 import "./App.css";
 import { GlobalContext } from "./context/context";
-import { getIssuerData } from "./helpers/functions";
+import { getIssuerData, getUserData } from "./helpers/functions";
 import { ethers } from "ethers";
 import Config from "./Config";
 
 const App = () => {
-  const { loading, addWeb3ProviderToContext, addIssuerData, setUserType, setLoading } = useContext(GlobalContext);
+  const { loading, addWeb3ProviderToContext, addIssuerData, setUserType, setLoading, addUserData } = useContext(GlobalContext);
 
   useEffect(() => {
     (async () => {
@@ -36,6 +36,15 @@ const App = () => {
           const userType = "ISSUER";
           await setUserType({ userType });
         }
+
+        // check if connected wallet is user or not. If he is user then set his data and usertype to user
+        const userData = await getUserData(Contract, accounts[0]);
+        userData && (await addUserData({ userData }));
+        if (userData) {
+          const userType = "USER";
+          await setUserType({ userType });
+        }
+
         setTimeout(() => {
           setLoading(false);
         }, 1000);
