@@ -1,4 +1,3 @@
-/* This example requires Tailwind CSS v2.0+ */
 import React, { useContext } from "react";
 import { GlobalContext } from "../context/context";
 import { Link } from "react-router-dom";
@@ -11,7 +10,11 @@ import {
   addNewUserOnLogin,
 } from "../helpers/functions";
 
-export default function Example() {
+import mainLogo from "./logo.png";
+
+
+
+export default function Header() {
   const {
     accounts,
     addWeb3ProviderToContext,
@@ -62,10 +65,11 @@ export default function Example() {
             to="/"
             className="flex items-center mb-5 font-medium text-gray-900 lg:w-auto lg:items-center lg:justify-center md:mb-0"
           >
-            <span className="mx-auto text-xl font-black leading-none text-gray-900 select-none">
-              fundmeon
-              <span className="w-full text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 lg:inline">
-                ETH
+           <img  src={mainLogo} className="w-12 h-12" alt="fireSpot"/>
+            <span className="mx-auto ml-0 text-xl font-black leading-none text-gray-900 select-none">
+              Certi
+              <span className="w-full text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-purple-500 lg:inline">
+                fi
               </span>
               <span className="text-indigo-600">.</span>
             </span>
@@ -75,20 +79,15 @@ export default function Example() {
               to="/creator/discover"
               className="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900"
             >
-              Discover
+              My Certificates
             </Link>
             <Link
               to="/analytics/dashboard/user"
               className="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900"
             >
-              Dashboard
+              Shared with me 
             </Link>
-            <Link
-              to="/creator/profile"
-              className="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900"
-            >
-              Become a Creator
-            </Link>
+           
           </nav>
         </div>
 
@@ -104,7 +103,7 @@ export default function Example() {
               accounts && accounts.length > 0 && accounts[0] ? true : false
             }
             onClick={doAuth}
-            className="inline-flex items-center justify-center px-2 py-1 text-base font-medium leading-6 text-white whitespace-no-wrap bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600"
+            className="inline-flex items-center justify-center px-2 py-1 text-base font-medium leading-6 text-white whitespace-no-wrap bg-yellow-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600"
           >
             {accounts && accounts.length > 0 && accounts[0]
               ? "Connected"
