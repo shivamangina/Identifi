@@ -257,7 +257,19 @@ contract Certifi is Owner {
     function verifyCertificate(string memory _certificateId)
         public
         view
-        returns (bool)
+        returns (
+            string memory id,
+            string memory name,
+            string memory typeOfCertificate,
+            string memory version,
+            string memory issuedDate,
+            string memory expiresAt,
+            bool isPermanent,
+            bool isPublic,
+            bool isActive,
+            address issuerPublicKey,
+            address userPublicKey
+        )
     {
         // get the certificate
         for (uint256 i = 0; i < certificates.length; i++) {
@@ -270,12 +282,22 @@ contract Certifi is Owner {
                     users[certificates[i].userPublicKey].isActive && // check if the user is active
                     certificates[i].isActive // check if the certificate is active
                 ) {
-                    return true;
+                    return (
+                        certificates[i].id,
+                        certificates[i].name,
+                        certificates[i].typeOfCertificate,
+                        certificates[i].version,
+                        certificates[i].issuedDate,
+                        certificates[i].expiresAt,
+                        certificates[i].isPermanent,
+                        certificates[i].isPublic,
+                        certificates[i].isActive,
+                        certificates[i].issuerPublicKey,
+                        certificates[i].userPublicKey
+                    );
                 }
             }
         }
-
-        return false;
     }
 
     function getUserData(address _address)
