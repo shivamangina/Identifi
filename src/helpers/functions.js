@@ -98,3 +98,23 @@ export const getIssuerData = async (Contract, address) => {
     console.log(error, "error");
   }
 };
+
+export const getUserData = async (Contract, address) => {
+  try {
+    const userDataUnFormatted = await Contract.getUserData(address);
+    const userData = {};
+    if (userDataUnFormatted && userDataUnFormatted[6]) {
+      userData.firstName = userDataUnFormatted[0];
+      userData.lastName = userDataUnFormatted[1];
+      userData.gender = userDataUnFormatted[2];
+      userData.isActive = userDataUnFormatted[3];
+      userData.publicKey = userDataUnFormatted[4];
+      userData.typeOfUser = userDataUnFormatted[5];
+      userData.location = userDataUnFormatted[6];
+      userData.userCreated = userDataUnFormatted[7];
+    }
+    return userData;
+  } catch (error) {
+    console.log(error, "error");
+  }
+};
