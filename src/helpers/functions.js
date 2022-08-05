@@ -202,3 +202,12 @@ export const getSharedCertificatesByUser = async (Contract, address) => {
     console.error(error.message);
   }
 };
+
+export const verifyCertificate = async (Contract, certId) => {
+  try {
+    const isCertValid = await Contract.verifyCertificate(certId);
+    return isCertValid;
+  } catch (error) {
+    console.error(error.message);
+  }
+};
