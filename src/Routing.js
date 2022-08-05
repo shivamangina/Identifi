@@ -7,30 +7,43 @@ import Footer from "./layouts/Footer";
 
 import Home from "./pages/home/Home";
 /** Pages */
-import CreatorProfile from "./pages/creator-profile/CreatorProfile";
-import CreatorView from "./pages/creator-view/CreatorView";
-import CreatorDiscover from "./pages/creator-discover/CreatorDiscover";
-
-import Dashboard from "./pages/dashboard/Analytics";
-import CreatorDashboard from "./pages/dashboard/CreatorDashboard";
-import UserDashboard from "./pages/dashboard/UserDashboard";
+import Profile from "./pages/profile/Profile";
+import IssuedCertificate from "./pages/issued-certificates/IssuedCertificate";
+import IssueCertificate from "./pages/issue-certificates/IssueCertificates";
+import SelfCertificates from "./pages/self-certificates/SelfCertificates";
+import SharedCertificates from "./pages/shared-certificates/SharedCertificates";
 
 function Routing() {
   return (
     <>
       <BrowserRouter>
-      
         <Header />
-        <Routes  path="/analytics/dashboard" to="/analytics/dashboard/creator" >
-        <Route exact path="/" element={<Home />} />
+        <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/creator/profile" element={<CreatorProfile />} />
-          <Route exact path="/creator/view" element={<CreatorView />} />
-          <Route exact path="/creator/discover" element={<CreatorDiscover />} />
-          <Route  path="/analytics/dashboard"  element={<Dashboard />}>
-            <Route  path="/analytics/dashboard/creator" element={<CreatorDashboard />} />
-            <Route  path="/analytics/dashboard/user" element={<UserDashboard />} />
-          </Route>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/profile" element={<Profile />} />
+          <Route exact path="/verify" element={<Home />} />
+          {/* Issuer Routes */}
+
+          <Route
+            path="/certificates/issuer/issued"
+            element={<IssuedCertificate />}
+          />
+          <Route
+            path="/certificates/issuer/issuenew"
+            element={<IssueCertificate />}
+          />
+
+          {/* User Routes */}
+
+          <Route
+            path="/certificates/user/self"
+            element={<SelfCertificates />}
+          />
+          <Route
+            path="/certificates/user/shared"
+            element={<SharedCertificates />}
+          />
         </Routes>
         <Footer />
       </BrowserRouter>
