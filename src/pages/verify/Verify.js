@@ -4,9 +4,10 @@ import { verifyCertificate } from "../../helpers/functions";
 import { GlobalContext } from "../../context/context";
 
 const Verify = () => {
-  const { Contract } = useContext(GlobalContext);
+  const { Contract, userType } = useContext(GlobalContext);
 
   const search = async (certId) => {
+    if (!userType) alert("Please signup to verify the certificate");
     console.log(certId, "certId");
     const isVerified = await verifyCertificate(Contract, certId);
     console.log(isVerified, "isVerified");

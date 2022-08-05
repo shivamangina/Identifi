@@ -2,10 +2,11 @@
 import React, { useState } from "react";
 import ReactModal from "./ReactModal";
 import CertTemplate from "../assets/template.png";
+import ShareCertificateForm from "../components/ShareCertificate";
 
 const CreatorCard = (props) => {
   const { data } = props;
-  const [show, setShow] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   return (
     <div className="w-full border border-gray-200 rounded-lg shadow-sm">
@@ -39,7 +40,7 @@ const CreatorCard = (props) => {
 
         <span
           // href="#_"
-          onClick={() => setShow(true)}
+          onClick={() => setModalIsOpen(true)}
           className="flex-1 inline-flex block p-5 text-center text-gray-500 transition duration-200 ease-out hover:bg-gray-100 hover:text-gray-500">
           <p>Share</p>
           <svg
@@ -69,7 +70,16 @@ const CreatorCard = (props) => {
         </span>
       </div>
 
-      {show && <ReactModal setShowModal={setShow} showModal={show} certId={data.id} />}
+      {modalIsOpen && (
+        <ReactModal
+          modalIsOpen={modalIsOpen}
+          closeModal={() => {
+            setModalIsOpen(false);
+          }}
+          component={ShareCertificateForm}
+          state={{ certId: data.id }}
+        />
+      )}
     </div>
   );
 };

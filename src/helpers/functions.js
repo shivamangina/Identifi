@@ -211,3 +211,11 @@ export const verifyCertificate = async (Contract, certId) => {
     console.error(error.message);
   }
 };
+
+export const shareCertificate = async (Contract, certId, address) => {
+  try {
+    await Contract.shareCertificate(certId, address);
+  } catch (error) {
+    console.error(error.message);
+  }
+};

@@ -1,12 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { GlobalContext } from "../context/context";
 import { Link } from "react-router-dom";
-
-import { ethers } from "ethers";
-import Config from "../Config";
-import { getAllCreators, getLoggedInUser, addNewUserOnLogin } from "../helpers/functions";
-
+import SignUpForm from "../components/SignUpForm";
 import mainLogo from "./logo.png";
+import ReactModal from "../pages/ReactModal";
 
 const paths = [
   {
@@ -32,35 +29,15 @@ const paths = [
 ];
 
 export default function Header() {
-  const { accounts, addWeb3ProviderToContext, addUserInfo, addCreatorData, userInfo, Contract, userType } = useContext(GlobalContext);
+  const { accounts, userData, userType, issuerData } = useContext(GlobalContext);
 
-  const doAuth = async () => {
-    await window.ethereum.enable();
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const accounts = await provider.listAccounts();
-    const signer = provider.getSigner();
-    const Contract = new ethers.Contract(Config.DEPLOYED_CONTRACT.ROPSTEN.CONTRACT_ADDRESS, Config.DEPLOYED_CONTRACT.ROPSTEN.ABI, signer);
-    await addWeb3ProviderToContext({
-      provider,
-      signer,
-      accounts,
-      Contract
-    });
-    const creatorData = await getAllCreators(Contract);
-    await addCreatorData({
-      creatorData
-    });
-    const userInfo = await getLoggedInUser(creatorData, accounts[0]);
-    await addUserInfo({
-      userInfo: userInfo[0]
-    });
-  };
-
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const signUp = async () => {
     // insert user if he is not in our records
-    if (!userInfo || !userInfo.name) {
-      await addNewUserOnLogin(Contract);
-    }
+    setModalIsOpen(true);
+    // if (!userData || !userData.name) {
+    //   await addNewUserOnLogin(Contract);
+    // }
   };
 
   return (
@@ -86,7 +63,6 @@ export default function Header() {
                 ))}
           </nav>
         </div>
-
         <div className="inline-flex items-center ml-1 space-x-5 lg:justify-end">
           {accounts && accounts.length > 0 && (
             <span className="mr-2 font-medium leading-6 text-gray-600 hover:text-gray-900 bg-indigo-100">Connected to : {accounts[0]}</span>
@@ -94,20 +70,23 @@ export default function Header() {
 
           <button
             disabled={accounts && accounts.length > 0 && accounts[0] ? true : false}
-            onClick={doAuth}
             className="inline-flex items-center justify-center px-2 py-1 text-base font-medium leading-6 text-white whitespace-no-wrap bg-yellow-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">
             {accounts && accounts.length > 0 && accounts[0] ? "Connected" : "Connect to wallet"}
           </button>
         </div>
-        {!userInfo && (
-          <button
-            disabled={userInfo && userInfo.name ? true : false}
-            onClick={signUp}
-            className="inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            {/* {userInfo && userInfo.name ? `${userInfo.name}` : "Sign Up"} */}
-            Sign Up
-          </button>
-        )}
+        <button
+          disabled={userData && userData.firstName ? true : issuerData && issuerData.name ? true : false}
+          onClick={signUp}
+          className="inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          {userData && userData.firstName ? `Hi, ${userData.firstName}` : issuerData && issuerData.name ? `Hi, ${issuerData.name}` : "Sign Up"}
+        </button>
+        <ReactModal
+          modalIsOpen={modalIsOpen}
+          closeModal={() => {
+            setModalIsOpen(false);
+          }}
+          component={SignUpForm}
+        />
       </div>
     </section>
   );
