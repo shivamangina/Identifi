@@ -69,7 +69,7 @@ const CreatorCard = (props) => {
         </span>
       </div>
 
-      {show && <ReactModal setShowModal={setShow} showModal={show} creatorAddress={data.walletAddress} />}
+      {show && <ReactModal setShowModal={setShow} showModal={show} certId={data.id} />}
     </div>
   );
 };

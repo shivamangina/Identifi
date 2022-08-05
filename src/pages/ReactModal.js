@@ -1,16 +1,15 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useContext } from "react";
 import { GlobalContext } from "../context/context";
-import { ethers } from "ethers";
 
 export default function Modal(props) {
-  const { showModal, setShowModal, creatorAddress } = props;
+  const { showModal, setShowModal, certId } = props;
   const { Contract } = useContext(GlobalContext);
-  const [amount, setAmount] = useState(null);
+  const [address, setAddress] = useState(null);
 
-  const donateEther = async () => {
+  const shareCertificate = async () => {
     try {
-      await Contract.donate(creatorAddress, amount, { value: ethers.utils.parseEther(amount) });
+      await Contract.shareCertificate(certId, address);
       setShowModal(false);
     } catch (error) {
       console.log(error, "error");
@@ -27,7 +26,7 @@ export default function Modal(props) {
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                  <h3 className="text-3xl font-semibold">Donate Ether</h3>
+                  <h3 className="text-3xl font-semibold">Share the Cert</h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => setShowModal(false)}>
@@ -38,13 +37,14 @@ export default function Modal(props) {
                 <div className="mt-6 grid grid-cols-1 ">
                   <div className="sm:col-span-3">
                     <label htmlFor="youtube" className="block text-sm font-medium text-gray-700">
-                      Amount
+                      Address
                     </label>
                     <div className="mt-1">
                       <input
-                        type="number"
+                        type="text"
                         name="youtube"
-                        onChange={(e) => setAmount(e.target.value)}
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
                         id="youtube"
                         autoComplete="family-name"
                         className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
@@ -63,7 +63,7 @@ export default function Modal(props) {
                   <button
                     className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
-                    onClick={donateEther}>
+                    onClick={shareCertificate}>
                     Confirm
                   </button>
                 </div>
