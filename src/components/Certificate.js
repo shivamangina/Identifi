@@ -79,7 +79,7 @@ const Certificate = (props) => {
                   <div className="col-xs-4 pm-certified col-xs-4 text-center">
                     <span className="pm-credits-text block sans">Buffalo City School District</span>
                     <span className="pm-empty-space block underline"></span>
-                    <span className="bold block">Issued On: {cert.issueDate} </span>
+                    <span className="bold block">Issued On: {cert.issuedDate} </span>
                   </div>
                   <div className="col-xs-4"></div>
                 </div>
