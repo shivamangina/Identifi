@@ -16,6 +16,9 @@ import IssueNewCertificate from "./pages/issue-new-certificate/IssueNewCertifica
 import SelfCertificates from "./pages/self-certificates/SelfCertificates";
 import SharedCertificates from "./pages/shared-certificates/SharedCertificates";
 
+
+import ViewCertificate from "./pages/view-certificate/ViewCertificate";
+
 function Routing() {
   return (
     <>
@@ -34,6 +37,9 @@ function Routing() {
           {/* User Routes */}
           <Route path="/user/self" element={<SelfCertificates />} />
           <Route path="/user/shared" element={<SharedCertificates />} />
+          {/* View cetificates */}
+          <Route path="/view-certificate/:certId" element={<ViewCertificate />} />
+
         </Routes>
         <Footer />
       </BrowserRouter>
