@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import Search from "./Search";
 import { verifyCertificate } from "../../helpers/functions";
 import { GlobalContext } from "../../context/context";
+import Certificate from "../../components/Certificate";
 
 const Verify = () => {
   const { Contract, userType } = useContext(GlobalContext);
@@ -23,7 +24,7 @@ const Verify = () => {
           </div>
         </div>
         <Search search={search} />
-        {/** Render Certificate Here */}
+        <Certificate/>
         {certificate && <h4>Certificate ID: {certificate.id}</h4>}
       </div>
     </section>

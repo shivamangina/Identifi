@@ -3,7 +3,7 @@ import "./certificate.css";
 
 export default function Certificate() {
   return (
-    <body>
+    
       <div className="container pm-certificate-container">
         <div className="outer-border"></div>
         <div className="inner-border"></div>
@@ -81,6 +81,6 @@ export default function Certificate() {
           </div>
         </div>
       </div>
-    </body>
+    
   );
 }
