@@ -2,9 +2,17 @@
 
 An application to Identity management and issuance of certificates and sharing of certificates on the blockchain
 
-## Tech Stack:
+<a href="https://certifi-novobloc.netlify.app">View Demo</a>
+<br>
+<br>
+Our Contract is deployed on `Ropsten`, so please Connect to `Ropsten` tesnet to get started.
+<br>
 
-- React
+### Built With
+
+This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+
+- React JS
 - Tailwind CSS
 - Hard Hat
 - Solidity
@@ -24,15 +32,15 @@ $ cd solidity
 $ npm install
 $ npx hardhat clean
 $ npx hardhat compile
-$ npx hardhat run .\scripts\deploy.js --network local
-$ npx hardhat --network local verify {YOUR_CONTRACT_ADDRESS}
+$ npx hardhat run .\scripts\deploy.js --network ropsten
+$ npx hardhat --network ropsten verify {YOUR_CONTRACT_ADDRESS}
 
 // React
 $ npm install
-$ npm run start
+$ npm start
 ```
 
 ## 👫 Contributors
 
-- [Shiva Kumar Mangina](https://github.com/shivamangina)
+- [Shiva Kumar](https://github.com/shivamangina)
 - [Sandeep Kumar](https://github.com/satyasandeep007)
