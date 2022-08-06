@@ -7,10 +7,9 @@ import { getIssuerData, getUserData } from "./helpers/functions";
 import { ethers } from "ethers";
 import Config from "./Config";
 
-
-
 const App = () => {
-  const { loading, addWeb3ProviderToContext, addIssuerData, setUserType, setLoading, addUserData } = useContext(GlobalContext);
+  const { loading, addWeb3ProviderToContext, addIssuerData, setUserType, setLoading, addUserData, currentAccount, Contract } =
+    useContext(GlobalContext);
 
   useEffect(() => {
     (async () => {
@@ -29,7 +28,8 @@ const App = () => {
           provider,
           signer,
           accounts,
-          Contract
+          Contract,
+          currentAccount: accounts[0]
         });
         // check if connected wallet is issuer or not. If he is issuer then set his data and usertype to issuer
         const issuerData = await getIssuerData(Contract, accounts[0]);
@@ -58,6 +58,44 @@ const App = () => {
       }
     })();
   }, []);
+
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       console.log(currentAccount, "currentAccount");
+  //       window.ethereum.on("accountsChanged", async (accounts) => {
+  //         /* do what you want here */
+  //         console.log(accounts, "accounts", currentAccount);
+  //         if (accounts[0] !== currentAccount) {
+  //           await addWeb3ProviderToContext({
+  //             accounts,
+  //             currentAccount: accounts[0]
+  //           });
+  //           // check if connected wallet is issuer or not. If he is issuer then set his data and usertype to issuer
+  //           const issuerData = await getIssuerData(Contract, accounts[0]);
+  //           issuerData && (await addIssuerData({ issuerData }));
+  //           if (issuerData) {
+  //             const userType = "ISSUER";
+  //             await setUserType({ userType });
+  //           }
+
+  //           if (!issuerData) {
+  //             // check if connected wallet is user or not. If he is user then set his data and usertype to user
+  //             const userData = await getUserData(Contract, accounts[0]);
+  //             userData && (await addUserData({ userData }));
+  //             if (userData) {
+  //               const userType = "USER";
+  //               await setUserType({ userType });
+  //             }
+  //           }
+  //         }
+  //       });
+  //     } catch (error) {
+  //       if (!error.message.includes("No User Found")) alert(error);
+  //       setLoading(false);
+  //     }
+  //   })();
+  // }, []);
 
   return <>{loading ? <Loader /> : <Routing />}</>;
 };

@@ -5,6 +5,7 @@ export const initialState = {
   Contract: null,
   loading: true,
   version: "1.0.0",
+  currentAccount: null,
   // Actual Data
   totalRecords: null,
   issuerData: null,

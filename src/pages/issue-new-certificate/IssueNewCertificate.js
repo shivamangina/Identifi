@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { GlobalContext } from "../../context/context";
+import moment from "moment";
 
 export default function IssueNewCertificate() {
   const { Contract, issuerData } = useContext(GlobalContext);
@@ -10,15 +11,19 @@ export default function IssueNewCertificate() {
   const [version, setVersion] = useState("");
   const [issuedDate, setIssuedDate] = useState("");
   const [expiresAt, setExpiresAt] = useState("");
-  const [isPermanent, setIsPermanent] = useState("");
-  const [isPublic, setIsPublic] = useState("");
-  const [isActive, setIsActive] = useState("");
+  const [isPermanent, setIsPermanent] = useState(true);
+  const [isPublic, setIsPublic] = useState(true);
+  const [isActive, setIsActive] = useState(true);
   const [userPublicKey, setUserPublicKey] = useState("");
   const [issuerPublicKey, setIssuerPublicKey] = useState("");
 
   useEffect(() => {
     if (issuerData && issuerData.isActive) {
+      const todayDate = moment().format("YYYY-MM-DD");
+      const expiryDate = moment().add(100, "years").format("YYYY-MM-DD");
       setIssuerPublicKey(issuerData.publicKey);
+      setIssuedDate(todayDate);
+      setExpiresAt(expiryDate);
     }
   }, []);
 
@@ -170,6 +175,7 @@ export default function IssueNewCertificate() {
                   type="text"
                   value={issuedDate}
                   name="issuedDate"
+                  disabled
                   id="issuedDate"
                   autoComplete="family-name"
                   className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
@@ -186,6 +192,7 @@ export default function IssueNewCertificate() {
                   onChange={(e) => setExpiresAt(e.target.value)}
                   type="text"
                   value={expiresAt}
+                  disabled
                   name="expiresAt"
                   id="expiresAt"
                   autoComplete="family-name"
@@ -217,6 +224,7 @@ export default function IssueNewCertificate() {
                   id="isPermanent"
                   name="isPermanent"
                   type="checkbox"
+                  disabled
                   checked={isPermanent}
                   onChange={(e) => {
                     setIsPermanent(e.target.checked);
@@ -237,6 +245,7 @@ export default function IssueNewCertificate() {
                 <input
                   id="isPublic"
                   name="isPublic"
+                  disabled
                   type="checkbox"
                   checked={isPublic}
                   onChange={(e) => {
@@ -249,7 +258,7 @@ export default function IssueNewCertificate() {
                 <label htmlFor="isPublic" className="font-medium text-gray-700">
                   Is Public
                 </label>
-                <p className="text-gray-500">Is the cert validity is life time?.</p>
+                <p className="text-gray-500">Is the cert Visibility is Public?.</p>
               </div>
             </div>
 
@@ -258,6 +267,7 @@ export default function IssueNewCertificate() {
                 <input
                   id="isActive"
                   name="isActive"
+                  disabled
                   type="checkbox"
                   checked={isActive}
                   onChange={(e) => {
@@ -270,7 +280,7 @@ export default function IssueNewCertificate() {
                 <label htmlFor="isActive" className="font-medium text-gray-700">
                   Is Active
                 </label>
-                <p className="text-gray-500">Is the cert validity is life time?.</p>
+                <p className="text-gray-500">Is the certificate is Active?.</p>
               </div>
             </div>
           </div>
@@ -279,15 +289,15 @@ export default function IssueNewCertificate() {
 
       <div className="pt-5">
         <div className="flex justify-end">
-          <button
+          {/* <button
             type="button"
             className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             Cancel
-          </button>
+          </button> */}
           <button
             type="submit"
             className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            Save
+            Issue
           </button>
         </div>
       </div>

@@ -208,14 +208,17 @@ export const verifyCertificate = async (Contract, certId) => {
     const certificateDataUnFormatted = await Contract.verifyCertificate(certId);
     const certificateData = {};
     if (certificateDataUnFormatted && certificateDataUnFormatted[4]) {
-      certificateData.firstName = certificateDataUnFormatted[0];
-      certificateData.lastName = certificateDataUnFormatted[1];
-      certificateData.gender = certificateDataUnFormatted[2];
-      certificateData.isActive = certificateDataUnFormatted[3];
-      certificateData.publicKey = certificateDataUnFormatted[4];
-      certificateData.typeOfUser = certificateDataUnFormatted[5];
-      certificateData.location = certificateDataUnFormatted[6];
-      certificateData.userCreated = certificateDataUnFormatted[7];
+      certificateData.id = certificateDataUnFormatted[0];
+      certificateData.name = certificateDataUnFormatted[1];
+      certificateData.typeOfCertificate = certificateDataUnFormatted[2];
+      certificateData.version = certificateDataUnFormatted[3];
+      certificateData.issuedDate = certificateDataUnFormatted[4];
+      certificateData.expiresAt = certificateDataUnFormatted[5];
+      certificateData.isPermanent = certificateDataUnFormatted[6];
+      certificateData.isPublic = certificateDataUnFormatted[7];
+      certificateData.isActive = certificateDataUnFormatted[8];
+      certificateData.issuerPublicKey = certificateDataUnFormatted[9];
+      certificateData.userPublicKey = certificateDataUnFormatted[10];
     }
     return certificateData;
   } catch (error) {
