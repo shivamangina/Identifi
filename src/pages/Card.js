@@ -4,7 +4,7 @@ import ReactModal from "./ReactModal";
 import CertTemplate from "../assets/template.png";
 import ShareCertificateForm from "../components/ShareCertificate";
 
-const CreatorCard = (props) => {
+export default function Card(props) {
   const { data } = props;
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -76,12 +76,16 @@ const CreatorCard = (props) => {
           closeModal={() => {
             setModalIsOpen(false);
           }}
-          component={ShareCertificateForm}
+          component={() => (
+            <ShareCertificateForm
+              closeModal={() => {
+                setModalIsOpen(false);
+              }}
+            />
+          )}
           state={{ certId: data.id }}
         />
       )}
     </div>
   );
-};
-
-export default CreatorCard;
+}
