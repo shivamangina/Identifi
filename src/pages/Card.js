@@ -12,7 +12,7 @@ export default function Card(props) {
   return (
     <div className="w-full border border-gray-200 rounded-lg shadow-sm">
       <div className="flex flex-col items-center justify-center p-10">
-        <img className="w-52 h-32 mb-6" src={data.photo || CertTemplate} />
+        <img className="w-52 h-32 mb-6 rounded drop-shadow-lg" src={data.photo || CertTemplate} />
         <h2 className="text-lg font-medium">{data.name || "Fred Clemens"}</h2>
         <p className="font-medium text-blue-500">{data.typeOfCertificate || "Degree"}</p>
         <p className="font-medium text-green-500">{data.isActive || "true"}</p>
