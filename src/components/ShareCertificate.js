@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import { GlobalContext } from "../context/context";
 import { shareCertificate } from "../helpers/functions";
 
-const ShareCertificateForm = ({ closeModel, data }) => {
+const ShareCertificateForm = ({ closeModal, certId }) => {
   // get form data in react hooks
   const { Contract } = useContext(GlobalContext);
   const [formData, setFormData] = useState({ address: "" });
@@ -16,10 +16,12 @@ const ShareCertificateForm = ({ closeModel, data }) => {
   // create a form in react hooks
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const certId = data.certId;
+
     const address = formData.address;
+    
     await shareCertificate(Contract, certId, address);
-    closeModel();
+    
+    closeModal();
   };
 
   return (
