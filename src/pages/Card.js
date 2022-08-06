@@ -49,6 +49,7 @@ export default function Card(props) {
               closeModal={() => {
                 setModalIsOpen(false);
               }}
+              certId={data.id}
             />
           )}
           state={{ certId: data.id }}
