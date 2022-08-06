@@ -85,7 +85,13 @@ export default function Header() {
           closeModal={() => {
             setModalIsOpen(false);
           }}
-          component={SignUpForm}
+          component={() => (
+            <SignUpForm
+              closeModal={() => {
+                setModalIsOpen(false);
+              }}
+            />
+          )}
         />
       </div>
     </section>

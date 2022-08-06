@@ -14,15 +14,9 @@ Modal.setAppElement("#root");
 
 // eslint-disable-next-line react/prop-types
 export default function ReactModal({ modalIsOpen, closeModal, component: Component, state }) {
-  let subtitle;
-
-  function afterOpenModal() {
-    subtitle.style.color = "#f00";
-  }
-
   return (
     <div>
-      <Modal isOpen={modalIsOpen} onAfterOpen={afterOpenModal} onRequestClose={closeModal} style={customStyles} contentLabel="Example Modal">
+      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel="Example Modal">
         {/* <button onClick={closeModal}>X</button> */}
         <br></br>
         <Component data={state} />

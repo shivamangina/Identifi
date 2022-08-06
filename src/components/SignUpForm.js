@@ -2,7 +2,8 @@ import React, { useContext, useState } from "react";
 import { createUser } from "../helpers/functions";
 import { GlobalContext } from "../context/context";
 
-export default function SignUpForm() {
+// eslint-disable-next-line react/prop-types
+export default function SignUpForm({closeModal}) {
   // get form data in react hooks
   const [formData, setFormData] = useState({
     firstName: "",
@@ -22,6 +23,8 @@ export default function SignUpForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await createUser(Contract, formData);
+    closeModal()
+
   };
 
   return (
