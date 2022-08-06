@@ -1,17 +1,30 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+import React, { useState, useEffect } from "react";
 import "./certificate.css";
 
-export default function Certificate() {
-  return (
-    
-      <div className="container pm-certificate-container">
-        <div className="outer-border"></div>
-        <div className="inner-border"></div>
+const Certificate = (props) => {
+  console.log(props.data);
+  const [cert, setCert] = useState(null);
 
+  useEffect(() => {
+    (async () => {
+      try {
+        setCert(props.data);
+      } catch (error) {
+        if (!error.message.includes("No User Found")) alert(error);
+      }
+    })();
+  }, []);
+
+  return (
+    <div className="container pm-certificate-container">
+      <div className="outer-border"></div>
+      <div className="inner-border"></div>
+      {cert && Object.keys(cert).length !== 0 && (
         <div className="pm-certificate-border col-xs-12">
           <div className="row pm-certificate-header">
             <div className="pm-certificate-title cursive col-xs-12 text-center">
-              <h2>Buffalo Public Schools Certificate of Completion</h2>
+              <h2>IIM Certificate Of {cert.typeOfCertificate}</h2>
             </div>
           </div>
 
@@ -21,7 +34,7 @@ export default function Certificate() {
                 <div className="row">
                   <div className="col-xs-2"></div>
                   <div className="pm-certificate-name underline margin-0 col-xs-8 text-center">
-                    <span className="pm-name-text bold">TrueNorth Administrator</span>
+                    <span className="pm-name-text bold">{cert.name}</span>
                   </div>
                   <div className="col-xs-2"></div>
                 </div>
@@ -31,8 +44,8 @@ export default function Certificate() {
                 <div className="row">
                   <div className="col-xs-2"></div>
                   <div className="pm-earned col-xs-8 text-center">
-                    <span className="pm-earned-text padding-0 block cursive">has earned</span>
-                    <span className="pm-credits-text block bold sans">PD175: 1.0 Credit Hours</span>
+                    <span className="pm-earned-text padding-0 block cursive">ID</span>
+                    <span className="pm-credits-text block bold sans">{cert.id}</span>
                   </div>
                   <div className="col-xs-2"></div>
                   <div className="col-xs-12"></div>
@@ -66,21 +79,17 @@ export default function Certificate() {
                   <div className="col-xs-4 pm-certified col-xs-4 text-center">
                     <span className="pm-credits-text block sans">Buffalo City School District</span>
                     <span className="pm-empty-space block underline"></span>
-                    <span className="bold block">Crystal Benton Instructional Specialist II, Staff Development</span>
+                    <span className="bold block">Issued On: {cert.issueDate} </span>
                   </div>
                   <div className="col-xs-4"></div>
-                  <div className="col-xs-4 pm-certified col-xs-4 text-center">
-                    <span className="pm-credits-text block sans">Date Completed</span>
-                    <span className="pm-empty-space block underline"></span>
-                    <span className="bold block">DOB: </span>
-                    <span className="bold block">Social Security # (last 4 digits)</span>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    
+      )}
+    </div>
   );
-}
+};
+
+export default Certificate;

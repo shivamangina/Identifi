@@ -7,7 +7,6 @@ import Certificate from "../../components/Certificate";
 const Verify = () => {
   const { Contract, userType } = useContext(GlobalContext);
   const [certificate, setCertificate] = useState(null);
-
   const search = async (certId) => {
     if (!userType) alert("Please signup to verify the certificate");
     console.log(certId, "certId");
@@ -24,8 +23,7 @@ const Verify = () => {
           </div>
         </div>
         <Search search={search} />
-        <Certificate/>
-        {certificate && <h4>Certificate ID: {certificate.id}</h4>}
+        {certificate && Object.keys(certificate).length !== 0 && <Certificate data={certificate} />}
       </div>
     </section>
   );

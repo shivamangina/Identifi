@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import ReactModal from "./ReactModal";
 import CertTemplate from "../assets/template.png";
 import ShareCertificateForm from "../components/ShareCertificate";
+import { Link } from "react-router-dom";
 
 export default function Card(props) {
   const { data } = props;
@@ -23,11 +24,11 @@ export default function Card(props) {
       <br />
 
       <div className="flex">
-        <a
-          href="#_"
+        <Link
+          to={"/view-certificate/" + data.id}
           className="flex-1 inline-flex block p-5 mx-auto text-center text-gray-500 transition duration-200 ease-out hover:bg-gray-100 hover:text-gray-500">
           <p className="mx-auto">View</p>
-        </a>
+        </Link>
 
         <span
           // href="#_"
