@@ -2,10 +2,10 @@
 
 An application to Identity management and issuance of certificates and sharing of certificates on the blockchain
 
-## PPT
-https://www.canva.com/design/DAFH3qemhug/QYYZebq85i3atoR9ofSGBQ/view?utm_content=DAFH3qemhug&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
-## Tech Stack:
+<a href="https://www.canva.com/design/DAFH3qemhug/QYYZebq85i3atoR9ofSGBQ/view?utm_content=DAFH3qemhug&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">View PPT</a>
+
+
 <a href="https://certifi-novobloc.netlify.app">View Demo</a>
 <br>
 <br>
